@@ -14,8 +14,8 @@ public class Lab11Prob01 {
 	public static void main(String args[]) {
 
 		try (
-				DataInputStream input = new DataInputStream(new FileInputStream("people.dat")); //removed src/ for github
-				DataOutputStream output = new DataOutputStream(new FileOutputStream("people-copy.dat")); //here too
+				DataInputStream input = new DataInputStream(new FileInputStream("src/people.dat")); //removed src/ for github
+				DataOutputStream output = new DataOutputStream(new FileOutputStream("src/people-copy.dat")); //here too
 				) {
 			while (true) {
 				int age = input.readInt();
@@ -24,8 +24,8 @@ public class Lab11Prob01 {
 				int zip = input.readInt();
 				double salary = input.readDouble();
 
-				System.out.printf("Age: %d, Name: %s, Address: %s, Zip: %d, Salary: %.2f%n", age, fullName, address,
-						zip, salary);
+				System.out.printf("%d %s %s %d %.2f%n",
+                        age, fullName, address, zip, salary);
 				
 				// people-copy.dat
 				output.writeInt(age);
@@ -35,7 +35,7 @@ public class Lab11Prob01 {
                 output.writeDouble(salary);
 			}
 		} catch (EOFException e) {
-			System.out.println("End of file reached.");
+
 		} catch (IOException e) {
 			System.out.println("Error reading the file:");
 			e.printStackTrace();
